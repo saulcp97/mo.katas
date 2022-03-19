@@ -1,6 +1,8 @@
 import unittest
+from weakref import proxy
 
 from rover import Rover
+from kata import Proxy
 
 """
 Mars rover moves through
@@ -27,9 +29,12 @@ class MarsRoverTestCase(unittest.TestCase):
             orientation='N'
         )
 
+        proxy = Proxy(rover, 3, 3)
         movements = ['f']
+
+
         expected_position = (1, 2)
-        rover.move(movements)
+        proxy.move(movements)
 
         self.assert_rover_position(expected_position, rover)
 
